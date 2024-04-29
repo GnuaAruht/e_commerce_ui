@@ -1,7 +1,72 @@
+import 'package:e_commerce_ui/const/app_const.dart';
+import 'package:e_commerce_ui/model/shoe_model.dart';
+import 'package:e_commerce_ui/page/detail/product_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 part 'widget/app_bar.dart';
+
+part 'widget/product_carousel.dart';
+
+final _shoeList = [
+  ShoeModel(
+    id: 1,
+    name: 'Jordan Stadium 90',
+    images: [
+      'images/products/11.png',
+      'images/products/12.png',
+      'images/products/13.png',
+    ],
+    price: 84,
+    bgColor: const Color(0xFFFB6E5E),
+  ),
+  ShoeModel(
+    id: 2,
+    name: 'Jordan Stadium 90',
+    images: [
+      'images/products/21.png',
+      'images/products/22.png',
+      'images/products/23.png',
+    ],
+    price: 84,
+    bgColor: const Color(0xFF3FC2BE),
+  ),
+  ShoeModel(
+    id: 6,
+    name: 'Jordan Stadium 90',
+    images: [
+      'images/products/31.png',
+      'images/products/32.png',
+      'images/products/33.png',
+    ],
+    price: 84,
+    bgColor: const Color(0xFFEFBC68),
+    // bgColor: const Color(0xFFF6CE71),
+  ),
+  ShoeModel(
+    id: 4,
+    name: "Nike Air Force 1 '07",
+    images: [
+      'images/products/41.png',
+      'images/products/42.png',
+      'images/products/43.png',
+    ],
+    price: 84,
+    bgColor: const Color(0xFF3DC78F),
+  ),
+  ShoeModel(
+    id: 5,
+    name: "Nike Air Force 1 '07",
+    images: [
+      'images/products/51.png',
+      'images/products/52.png',
+      'images/products/53.png',
+    ],
+    price: 84,
+    // bgColor: const Color(0xFF6E6B6B),
+    bgColor: const Color(0xFF8A8787),
+  ),
+];
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,101 +79,16 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const _AppBar(),
-            const SizedBox(height: 18.0),
-            const Expanded(
+            const SizedBox(height: defaultPadding),
+            Expanded(
               flex: 2,
-              child: _ItemList(),
+              child: _ProductCarousel(shoes: _shoeList),
             ),
-            const SizedBox(height: 18.0),
+            const SizedBox(height: defaultPadding),
             Expanded(child: Container()),
           ],
         ),
       ),
-    );
-  }
-}
-
-class _ItemList extends StatefulWidget {
-  const _ItemList({super.key});
-
-  @override
-  State<_ItemList> createState() => _ItemListState();
-}
-
-class _ItemListState extends State<_ItemList> {
-  final PageController controller = PageController(viewportFraction: 0.78);
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return PageView.builder(
-      itemCount: 5,
-      controller: controller,
-      padEnds: false,
-      itemBuilder: (context, index) {
-        return Container(
-          margin: const EdgeInsets.symmetric(horizontal: 18.0),
-          padding: const EdgeInsets.all(18.0),
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.circular(18.0),
-          ),
-          child: DefaultTextStyle(
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w800,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('\$48',style: TextStyle(fontSize: 24.0)),
-                Expanded(
-                  child: Stack(
-                    children: [
-                      const VerticalDivider(
-                        thickness: 1.2,
-                        color: Colors.white54,
-                        indent: 18.0,
-                        endIndent: 18.0,
-                      ),
-                      Center(
-                        child: Transform(
-                          transform: Matrix4.rotationZ((-math.pi / 180.0) * 50.0),
-                          alignment: Alignment.center,
-                          child: Transform.translate(
-                            offset: const Offset(-10, 0),
-                            child: Image.asset("images/products/11.png"),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Text(
-                  'Shoe name\n(DJ251-101)',
-                  style: TextStyle(fontSize: 20.0),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    padding: const EdgeInsets.all(18.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(18.0),
-                    ),
-                    child: Image.asset('images/icons/bag.png'),
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 }
