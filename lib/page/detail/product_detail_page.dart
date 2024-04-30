@@ -3,7 +3,9 @@ import 'package:e_commerce_ui/model/shoe_model.dart';
 import 'package:flutter/material.dart';
 
 
-part 'widget/product_detail_container.dart';
+part 'widget/detail_container.dart';
+part 'widget/size_list.dart';
+part 'widget/cart_button.dart';
 
 class ProductDetailPage extends StatelessWidget {
   final ShoeModel shoe;
@@ -35,6 +37,14 @@ class ProductDetailPage extends StatelessWidget {
               bottom: defaultPadding + 20.0,
             ),
           ),
+          const SizedBox(height: defaultPadding * 2),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: defaultPadding * 1.4),
+            child: _ProductSizeList(),
+          ),
+          const Spacer(),
+          AddToCartButton(onPressed: () {}),
+          const Spacer(),
         ],
       ),
     );
