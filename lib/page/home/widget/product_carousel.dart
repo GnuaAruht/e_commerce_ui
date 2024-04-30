@@ -93,9 +93,9 @@ class _ProductItem extends StatelessWidget {
                 ],
               ),
             ),
-            const Text(
-              'Shoe name\n(DJ251-101)',
-              style: TextStyle(fontSize: 20.0),
+            Text(
+              '${shoe.name}\n(DJ251-101)',
+              style: const TextStyle(fontSize: 20.0),
             ),
             Align(
               alignment: Alignment.centerRight,
