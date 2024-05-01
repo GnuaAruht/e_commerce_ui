@@ -11,6 +11,9 @@ A Flutter E-Commerce  UI project.
 ## Sample gif
 [<img src="./docs/screenshots/sample.gif" width=347>](./docs/screenshots/sample.gif)
 
+## Reference UI
+https://dribbble.com/shots/22179167-Animation-E-Commerce-Mobile-App
+
 
 ## Support
 If you like the project, please do not forget to star the repo. Any single star would be appreciated.
