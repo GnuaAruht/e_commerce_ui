@@ -1,16 +1,16 @@
 # e_commerce_ui
 
-A new Flutter project.
+A Flutter E-Commerce  UI project.
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+[<img src=".docs/screenshots/home.png" width=347>](.docs/screenshots/home.png)
+[<img src=".docs/screenshots/detail_1.png" width=347>](.docs/screenshots/detail_1.png)
+[<img src=".docs/screenshots/detail_2.png" width=347>](.docs/screenshots/detail_2.png)
 
-A few resources to get you started if this is your first Flutter project:
+## Sample
+[<img src=".docs/screenshots/sample.gif" width=347>](.docs/screenshots/sample.gif)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Support
+If you like the project, please do not forget to star the repo. Any single star would be appreciated.
