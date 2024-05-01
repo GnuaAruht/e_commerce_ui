@@ -27,7 +27,23 @@ class _ProductCarouselState extends State<_ProductCarousel> {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () => _onShoeTapped(_shoeList[index]),
-          child: _ProductItem(shoe: widget.shoes[index]),
+          child: _buildProductItem(index),
+        );
+      },
+    );
+  }
+
+  Widget _buildProductItem(int index) {
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, __) {
+        double value = 0.0;
+        if (controller.position.haveDimensions) {
+          value = (index - controller.page!).clamp(-1, 1);
+        }
+        return _ProductItem(
+          shoe: widget.shoes[index],
+          value: value,
         );
       },
     );
@@ -43,9 +59,10 @@ class _ProductCarouselState extends State<_ProductCarousel> {
 }
 
 class _ProductItem extends StatelessWidget {
+  final double value;
   final ShoeModel shoe;
 
-  const _ProductItem({super.key, required this.shoe});
+  const _ProductItem({super.key, required this.shoe, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +107,8 @@ class _ProductItem extends StatelessWidget {
                         child: Hero(
                           tag: shoe.images.first,
                           child: Transform(
-                            transform:
-                                Matrix4.rotationZ((-math.pi / 180.0) * 60.0),
+                            transform: Matrix4.rotationZ(
+                                (-math.pi / 180.0) * (50.0 + (50 * value))),
                             alignment: Alignment.center,
                             child: Transform.translate(
                               offset: const Offset(-10, 0),
