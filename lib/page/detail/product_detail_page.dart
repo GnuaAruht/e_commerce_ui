@@ -27,14 +27,17 @@ class ProductDetailPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: Column(
         children: [
-          _ProductDetailContainer(
-            shoe: shoe,
-            height: mediaQuery.size.height * 0.6,
-            padding: EdgeInsets.only(
-              left: defaultPadding,
-              right: defaultPadding,
-              top: mediaQuery.padding.top + kToolbarHeight + defaultPadding,
-              bottom: defaultPadding + 20.0,
+          Material(
+            type: MaterialType.transparency,
+            child: _ProductDetailContainer(
+              shoe: shoe,
+              height: mediaQuery.size.height * 0.6,
+              padding: EdgeInsets.only(
+                left: defaultPadding,
+                right: defaultPadding,
+                top: mediaQuery.padding.top + kToolbarHeight + defaultPadding,
+                bottom: defaultPadding + 20.0,
+              ),
             ),
           ),
           const SizedBox(height: defaultPadding * 2),

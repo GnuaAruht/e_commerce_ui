@@ -49,68 +49,80 @@ class _ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: defaultPadding,
-        vertical: 8.0,
-      ),
-      padding: const EdgeInsets.all(defaultPadding),
-      decoration: BoxDecoration(
-        // color: Colors.blue,
-        color: shoe.bgColor,
-        borderRadius: BorderRadius.circular(defaultBorderRadius),
-        boxShadow: const [defaultBoxShadow],
-      ),
-      child: DefaultTextStyle(
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w800,
+    return Stack(
+      children: [
+        Hero(
+          tag: "shoe_${shoe.id}",
+          child: Container(
+            margin: const EdgeInsets.symmetric(
+              horizontal: defaultPadding,
+              vertical: 8.0,
+            ),
+            decoration: BoxDecoration(
+              color: shoe.bgColor,
+              borderRadius: BorderRadius.circular(defaultBorderRadius),
+              boxShadow: const [defaultBoxShadow],
+            ),
+          ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('\$48', style: TextStyle(fontSize: 24.0)),
-            const SizedBox(height: defaultPadding),
-            Expanded(
-              child: Stack(
-                children: [
-                  const VerticalDivider(
-                    thickness: 1.2,
-                    color: Colors.white54,
-                    indent: defaultPadding,
-                    endIndent: defaultPadding,
-                  ),
-                  Center(
-                    child: Transform(
-                      transform: Matrix4.rotationZ((-math.pi / 180.0) * 60.0),
-                      alignment: Alignment.center,
-                      child: Transform.translate(
-                        offset: const Offset(-10, 0),
-                        child: Image.asset(shoe.images.first),
+        DefaultTextStyle(
+          style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w800,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(defaultPadding * 2),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('\$48', style: TextStyle(fontSize: 24.0)),
+                const SizedBox(height: defaultPadding),
+                Expanded(
+                  child: Stack(
+                    children: [
+                      const VerticalDivider(
+                        thickness: 1.2,
+                        color: Colors.white54,
+                        indent: defaultPadding,
+                        endIndent: defaultPadding,
                       ),
-                    ),
+                      Center(
+                        child: Hero(
+                          tag: shoe.images.first,
+                          child: Transform(
+                            transform:
+                                Matrix4.rotationZ((-math.pi / 180.0) * 60.0),
+                            alignment: Alignment.center,
+                            child: Transform.translate(
+                              offset: const Offset(-10, 0),
+                              child: Image.asset(shoe.images.first),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            Text(
-              '${shoe.name}\n(DJ251-101)',
-              style: const TextStyle(fontSize: 20.0),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                padding: const EdgeInsets.all(defaultPadding),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(defaultBorderRadius),
                 ),
-                child: Image.asset('images/icons/bag.png'),
-              ),
-            )
-          ],
+                Text(
+                  '${shoe.name}\n(DJ251-101)',
+                  style: const TextStyle(fontSize: 20.0),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    padding: const EdgeInsets.all(defaultPadding),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(defaultBorderRadius),
+                    ),
+                    child: Image.asset('images/icons/bag.png'),
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

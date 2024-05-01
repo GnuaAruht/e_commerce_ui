@@ -30,43 +30,60 @@ class _ProductDetailContainerState extends State<_ProductDetailContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: widget.height,
-      padding: widget.padding,
-      decoration: BoxDecoration(
-        color: widget.shoe.bgColor,
-        borderRadius: const BorderRadius.only(
-          bottomRight: Radius.circular(86.0),
-        ),
-        boxShadow: const [defaultBoxShadow],
-      ),
-      child: Column(
-        children: [
-          ProductViewList(
-            selectedIndex: viewIndex,
-            imageUrls: widget.shoe.images,
-            onItemPressed: onItemViewPressed,
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                const VerticalDivider(
-                  thickness: 1.2,
-                  color: Colors.white54,
-                  indent: defaultPadding,
-                  endIndent: defaultPadding,
-                ),
-                const SizedBox(width: defaultPadding * 2),
-                Expanded(child: Image.asset(widget.shoe.images[viewIndex])),
-                const SizedBox(width: defaultPadding * 2),
-              ],
+    return Stack(
+      children: [
+        Hero(
+          tag: "shoe_${widget.shoe.id}",
+          child: Container(
+            width: double.infinity,
+            height: widget.height,
+            decoration: BoxDecoration(
+              color: widget.shoe.bgColor,
+              borderRadius: const BorderRadius.only(
+                bottomRight: Radius.circular(86.0),
+              ),
+              boxShadow: const [defaultBoxShadow],
             ),
           ),
-          const SizedBox(height: defaultPadding),
-          _ProductDescription(shoe: widget.shoe),
-        ],
-      ),
+        ),
+        Container(
+          width: double.infinity,
+          height: widget.height,
+          padding: widget.padding,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ProductViewList(
+                selectedIndex: viewIndex,
+                imageUrls: widget.shoe.images,
+                onItemPressed: onItemViewPressed,
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    const VerticalDivider(
+                      thickness: 1.2,
+                      color: Colors.white54,
+                      indent: defaultPadding,
+                      endIndent: defaultPadding,
+                    ),
+                    const SizedBox(width: defaultPadding * 2),
+                    Expanded(
+                      child: Hero(
+                        tag: widget.shoe.images[viewIndex],
+                        child: Image.asset(widget.shoe.images[viewIndex]),
+                      ),
+                    ),
+                    const SizedBox(width: defaultPadding * 2),
+                  ],
+                ),
+              ),
+              const SizedBox(height: defaultPadding * 2),
+              _ProductDescription(shoe: widget.shoe),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
