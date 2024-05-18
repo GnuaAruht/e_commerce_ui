@@ -1,35 +1,32 @@
 part of '../home_page.dart';
 
-class _AppBar extends StatelessWidget {
+class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   const _AppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: kToolbarHeight,
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 18.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset(
-              'images/icons/bars.png',
-              width: 24.0,
-              height: 24.0,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Image.asset(
-              'images/icons/search.png',
-              width: 24.0,
-              height: 24.0,
-            ),
-          ),
-        ],
+    return AppBar(
+      leading: IconButton(
+        onPressed: () {},
+        icon: Image.asset(
+          'images/icons/bars.png',
+          width: appBarIconSize,
+          height: appBarIconSize,
+        ),
       ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: Image.asset(
+            'images/icons/search.png',
+            width: appBarIconSize,
+            height: appBarIconSize,
+          ),
+        ),
+      ],
     );
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
