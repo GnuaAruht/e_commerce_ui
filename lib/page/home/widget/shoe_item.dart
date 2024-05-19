@@ -89,4 +89,5 @@ class _ProductItem extends StatelessWidget {
       ),
     );
   }
+
 }

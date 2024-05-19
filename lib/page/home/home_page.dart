@@ -1,7 +1,6 @@
 import 'package:e_commerce_ui/const/app_const.dart';
 import 'package:e_commerce_ui/data/temp_data.dart';
 import 'package:e_commerce_ui/model/shoe_model.dart';
-import 'package:e_commerce_ui/page/detail/product_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -22,10 +21,12 @@ class HomePage extends StatelessWidget {
       appBar: const _AppBar(),
       body: Column(
         children: [
-          Expanded(flex: 2, child: _ProductCarousel(shoes: TempData.shoeList)),
-          // const SizedBox(height: defaultPadding * 2),
-          // const Expanded(child: _BottomMenu())
-          Expanded(child: Container())
+          Expanded(
+            flex: 2,
+            child: _ProductCarousel(shoes: TempData.shoeList),
+          ),
+          const SizedBox(height: defaultPadding * 2),
+          const Expanded(child: _BottomMenu())
         ],
       ),
     );
