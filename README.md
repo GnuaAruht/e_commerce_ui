@@ -13,7 +13,3 @@ A Flutter E-Commerce  UI project.
 
 ## Reference UI
 https://dribbble.com/shots/22179167-Animation-E-Commerce-Mobile-App
-
-
-## Support
-If you like the project, please do not forget to star the repo. Every single star would be appreciated.
